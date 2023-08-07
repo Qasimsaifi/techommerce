@@ -33,23 +33,27 @@ export const themes = [
   "winter",
 ];
 
+
 const ThemeContext = createContext();
-const localStorage = typeof window !== "undefined" ? window.localStorage : null;
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    const storedTheme = localStorage.getItem("theme");
+    const storedTheme = typeof window !== "undefined" ? localStorage.getItem("theme") : null;
     return storedTheme ? storedTheme : "light"; // Default theme if no stored theme
   });
 
   const applyTheme = (newTheme) => {
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("theme", newTheme);
+      document.documentElement.setAttribute("data-theme", newTheme);
+    }
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    if (typeof window !== "undefined") {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
   }, [theme]);
 
   return (
