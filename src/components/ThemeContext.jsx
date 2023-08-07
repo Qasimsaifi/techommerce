@@ -1,5 +1,5 @@
-"use client"
-import React, { createContext, useContext, useState, useEffect } from 'react';
+"use client";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 export const themes = [
   "light",
@@ -34,21 +34,21 @@ export const themes = [
 ];
 
 const ThemeContext = createContext();
-
+const localStorage = window.localStorage;
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    const storedTheme = localStorage.getItem('theme');
-    return storedTheme ? storedTheme : 'light'; // Default theme if no stored theme
+    const storedTheme = localStorage.getItem("theme");
+    return storedTheme ? storedTheme : "light"; // Default theme if no stored theme
   });
 
   const applyTheme = (newTheme) => {
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   return (
