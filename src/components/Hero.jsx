@@ -4,6 +4,10 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const images = [
+  // '/1.jpg',
+  // '/2.jpg',
+  // '/3.jpg',
+  // '/4.jpg',
   'https://cdn.pixabay.com/photo/2017/06/21/23/10/tshirt-2429016_1280.jpg',
   'https://cdn.pixabay.com/photo/2017/06/21/20/51/tshirt-2428521_1280.jpg',
   'https://cdn.pixabay.com/photo/2017/05/18/15/40/hippie-2323918_1280.jpg',

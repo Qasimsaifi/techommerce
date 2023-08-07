@@ -3,8 +3,8 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Sidebar from '@/components/Sidebar'
 import Footer from '@/components/Footer'
-
-const inter = Inter({ subsets: ['latin'] })
+import { ThemeProvider } from '@/components/ThemeContext'
+import Navbar from '@/components/Navbar'
 
 export const metadata = {
   title: 'Create Next App',
@@ -13,11 +13,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html data-theme="synthwave" lang="en">
-      <body className={inter.className}>{children}</body>
+    <ThemeProvider>
+
+    <html  lang="en">
+      <body>
+      <Navbar/>
+        {children}
+        </body>
       <GoToTopButton/>
       <Sidebar/>
       <Footer/>
     </html>
+    </ThemeProvider>
   )
 }

@@ -16,10 +16,9 @@
   }
 }
 
-.card {
-  /* Apply your default card styles here */
-}
-
 .card.animation {
   animation: fadeInUp 0.6s ease-out;
+}
+html {
+  scroll-behavior: smooth;
 }
