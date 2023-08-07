@@ -32,7 +32,6 @@ export const themes = [
   "coffee",
   "winter",
 ];
-"use client";
 
 const ThemeContext = createContext();
 
