@@ -34,7 +34,8 @@ export const themes = [
 ];
 
 const ThemeContext = createContext();
-const localStorage = window.localStorage;
+const localStorage = typeof window !== "undefined" ? window.localStorage : null;
+
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     const storedTheme = localStorage.getItem("theme");
