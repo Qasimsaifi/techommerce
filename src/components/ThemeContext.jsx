@@ -32,35 +32,30 @@ export const themes = [
   "coffee",
   "winter",
 ];
+"use client";
 
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState("light"); // Default theme
 
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem("theme"); // Use localStorage
-    if (storedTheme) {
-      setTheme(storedTheme);
-    }
-  }, []); // Empty dependency array ensures this runs only once on client side
-
   const applyTheme = (newTheme) => {
     setTheme(newTheme);
     window.localStorage.setItem("theme", newTheme); // Use localStorage
-
-    // Check if we're in a browser environment before accessing the DOM
     if (typeof document !== "undefined") {
       document.documentElement.setAttribute("data-theme", newTheme);
     }
   };
 
   useEffect(() => {
-    // Check if we're in a browser environment before accessing the DOM
-    if (typeof document !== "undefined") {
-      document.documentElement.setAttribute("data-theme", theme);
+    const storedTheme = window.localStorage.getItem("theme"); // Use localStorage
+    if (storedTheme) {
+      setTheme(storedTheme);
+      if (typeof document !== "undefined") {
+        document.documentElement.setAttribute("data-theme", storedTheme);
+      }
     }
-  }, [theme]);
+  }, []); // Empty dependency array ensures this runs only once on client side
 
   return (
     <ThemeContext.Provider value={{ theme, applyTheme }}>
