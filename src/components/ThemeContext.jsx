@@ -32,17 +32,22 @@ export const themes = [
   "coffee",
   "winter",
 ];
+
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => {
-    const storedTheme = Cookies.get("theme");
-    return storedTheme ? storedTheme : "light"; // Default theme if no stored theme
-  });
+  const [theme, setTheme] = useState("light"); // Default theme
+
+  useEffect(() => {
+    const storedTheme = window.sessionStorage.getItem("theme");
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []); // Empty dependency array ensures this runs only once on client side
 
   const applyTheme = (newTheme) => {
     setTheme(newTheme);
-    Cookies.set("theme", newTheme);
+    window.sessionStorage.setItem("theme", newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
   };
 
@@ -60,5 +65,4 @@ export function ThemeProvider({ children }) {
 export function useTheme() {
   return useContext(ThemeContext);
 }
-
 
