@@ -1,6 +1,5 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect } from "react";
-import Cookies from "js-cookie";
 
 export const themes = [
   "light",
@@ -49,11 +48,18 @@ export function ThemeProvider({ children }) {
   const applyTheme = (newTheme) => {
     setTheme(newTheme);
     window.localStorage.setItem("theme", newTheme); // Use localStorage
-    document.documentElement.setAttribute("data-theme", newTheme);
+
+    // Check if we're in a browser environment before accessing the DOM
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-theme", newTheme);
+    }
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    // Check if we're in a browser environment before accessing the DOM
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
   }, [theme]);
 
   return (
