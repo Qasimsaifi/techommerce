@@ -1,10 +1,12 @@
 import dynamic from "next/dynamic";
+import productsData from "./ProductData";
 import collectionsData from "./collectionsData";
-import productsData from "./bestSellData";
 import themesData from "./themesData";
+import BestSellProductsData from "./BestSellProduct";
+import { Suspense } from "react";
+import Loading from "@/components/Loading";
 
 const HeroSection = dynamic(() => import("@/components/Hero"), { ssr: false });
-const Navbar = dynamic(() => import("@/components/Navbar"), { ssr: false });
 const ThemesCollectionComponent = dynamic(
   () => import("@/components/ThemesCollection"),
   { ssr: false }
@@ -23,12 +25,15 @@ const CollectionComponent = dynamic(() => import("@/components/Collections"), {
 
 export default function Home() {
   return (
-    <main>
+    <>
+    <Suspense fallback={<Loading />}>
+
       <HeroSection />
       <CollectionComponent collections={collectionsData} />
       <ThemesCollectionComponent themes={themesData} />
-      <BestSellingProductCard products={productsData} />
+      <BestSellingProductCard products={BestSellProductsData} />
       <BottomCards />
-    </main>
+    </Suspense>
+    </>
   );
 }

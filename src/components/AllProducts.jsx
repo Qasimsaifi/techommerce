@@ -1,9 +1,22 @@
 import React from "react";
+import { GrFormClose } from "react-icons/gr";
+import { AiOutlineClose } from "react-icons/ai";
+import { HiMenuAlt2 } from "react-icons/hi";
+import { FaFilter } from "react-icons/fa";
+import FilterComponent from "./FilterBar";
 
 const AllProduct = ({ cards }) => {
   return (
-    <div className="w-full max-w-screen-xl mx-auto px-4 mt-11 mb-14">
-      <div className="flex">
+    <>
+    {/* <FilterComponent/> */}
+    <div className="w-full max-w-screen-xl mx-auto px-4  mb-14">
+    {/* <label
+          htmlFor="my-drawe"
+          className="drawer-button btn btn-ghost btn-circle"
+        >
+          <FaFilter size={24} />
+        </label> */}
+      <div className="flex mt-4">
         <div className="relative w-1/2 mb-8">
           <h1 className="sm:text-3xl text-2xl font-medium title-font px-4 aos-init aos-animate mb-2">
             Products
@@ -45,6 +58,7 @@ const AllProduct = ({ cards }) => {
         ))}
       </div>
     </div>
+        </>
   );
 };
 

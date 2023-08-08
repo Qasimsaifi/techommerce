@@ -1,13 +1,13 @@
-// import RecommendedProductSlider from '@/components/RecomendedProducts';
-import CardSlider from '@/components/RecomendedProducts';
-import SingleProduct from '@/components/SingleProduct';
-import productsData from '@/app/bestSellData';
-const SingleProductPage = () => {
+import dynamic from 'next/dynamic';
+import productsData from "@/app/ProductData";
+const CardSlider = dynamic(() => import("@/components/RecomendedProducts"), { ssr: false });
+const SingleProduct = dynamic(() => import("@/components/SingleProduct"), { ssr: false });
 
+const SingleProductPage = ({ params }) => {
   return (
     <>
-   <SingleProduct/>
-   <CardSlider cards={productsData}/>
+      <SingleProduct filterLink={params.slug} productData={productsData}/>
+      <CardSlider cards={productsData} />
     </>
   );
 };

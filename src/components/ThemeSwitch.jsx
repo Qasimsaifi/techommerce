@@ -14,6 +14,7 @@ const ThemeSwitcher = () => {
 
   return (
     <div>
+      
       {/* Show switch to dark theme only when the current theme is not dark */}
       {theme !== 'dark' && (
         <button

@@ -1,13 +1,15 @@
-import AllProduct from '@/components/AllProducts'
-import productsData from '@/app/bestSellData';
+import dynamic from 'next/dynamic';
+import productsData from "@/app/ProductData";
+const AllProduct = dynamic(() => import("@/components/AllProducts"), { ssr: false });
+
 
 
 const AllProductsPage = () => {
   return (
     <>
-    <AllProduct cards={productsData}/>
+      <AllProduct cards={productsData} />
     </>
-  )
-}
+  );
+};
 
-export default AllProductsPage
+export default AllProductsPage;

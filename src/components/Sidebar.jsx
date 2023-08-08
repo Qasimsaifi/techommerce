@@ -28,9 +28,9 @@ const Sidebar = () => {
             <li>
               <a href="/products">PRODUCTS</a>
             </li>
-            <li>
+            {/* <li>
               <a>CART</a>
-            </li>
+            </li> */}
             <li>
               <ThemeSelector />
             </li>

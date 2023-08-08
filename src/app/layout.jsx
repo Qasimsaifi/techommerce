@@ -4,9 +4,9 @@ import GoToTopButton from '@/components/GoToTopButton';
 import './globals.css';
 import { Inter } from 'next/font/google';
 import Sidebar from '@/components/Sidebar';
-import Footer from '@/components/Footer';
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
 import { ThemeProvider } from '@/components/ThemeContext';
-import Navbar from '@/components/Navbar';
+const Navbar = dynamic(() => import("@/components/Navbar"), { ssr: false });
 
 export const metadata = {
   title: 'Create Next App',
