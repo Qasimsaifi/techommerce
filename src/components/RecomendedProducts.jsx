@@ -8,29 +8,42 @@ const CardSlider = ({ cards }) => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 1000,
+    speed: 2500, // Speed of slide animation
     slidesToShow: 4, // Adjust the number of cards to show at once
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2500,
+    autoplay: true, // Enable autoplay
+    autoplaySpeed: -1000000, // Set to 0 for continuous sliding
+    cssEase: "linear", // Use linear animation easing for continuous sliding
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3, // Show 3 cards on screens with width <= 1024px
+          slidesToShow: 3,
+          // Show 3 cards on screens with width <= 1024px
         },
       },
       {
         breakpoint: 640,
         settings: {
-          slidesToShow: 1, // Show 1 card on screens with width <= 640px
+          slidesToShow: 1,
+          speed: 2500, // Speed of slide animation
+
+          autoplaySpeed: 1000, // Set to 0 for continuous sliding
+          // Show 1 card on screens with width <= 640px
         },
       },
     ],
   };
 
   return (
-    <div className="w-full max-w-screen-xl mx-auto px-4">
+    <div className="w-full max-w-screen-xl mx-auto px-4 overflow-hidden">
+      <div className="relative w-1/2 mb-8 mt-8">
+        <h1 className="sm:text-3xl text-2xl font-medium title-font  aos-init aos-animate mb-4 pb-2">
+          Recommended Products
+        </h1>
+        <div className="absolute bottom-0 left-0 w-36 h-1 bg-primary mt-2"></div>
+      </div>
+      {/* Add overflow-hidden to hide the scrollbar */}
       <Slider {...settings}>
         {cards.map((card, index) => (
           <div key={index} className="focus:outline-none">

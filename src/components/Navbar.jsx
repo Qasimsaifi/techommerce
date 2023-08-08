@@ -15,7 +15,7 @@ const Navbar = () => {
         </label>
       </div>
       <div className="navbar-center">
-        <a className="cursor-pointer">
+        <a href="/" className="cursor-pointer">
           <div className="avatar ">
             <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 bg-primary ring-offset-2">
               <img src="/logo.png" className=""/>
